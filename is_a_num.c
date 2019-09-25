@@ -12,6 +12,11 @@ int _isdigit(int c)
 		return (0);
 }
 
+/**
+ * is_a_num - function that verifies if the variable is a number
+ * @n: is a character
+ * Return: 1 if success or 0 if not
+ */
 int is_a_num(char *n)
 {
 	int i;

@@ -1,5 +1,11 @@
 #define GLOBALS
 #include "monty.h"
+
+/**
+ * get_div_line - function that tokenizes the line
+ * @line: is a character
+ * Return: arrays of strings
+ */
 char **get_div_line(char *line)
 {
 	char **div;
@@ -14,6 +20,12 @@ char **get_div_line(char *line)
 	}
 	return (div);
 }
+
+/**
+ * select_instruction - function that sort the opcodes
+ * @bt_code: .m file
+ * Return: Void function
+ */
 void select_instruction(FILE *bt_code)
 {
 	int c, flag;
@@ -22,9 +34,9 @@ void select_instruction(FILE *bt_code)
 	char **div_line;
 	stack_t *stack;
 	instruction_t selector[] = {{"push", push}, {"pall", pall},
-				    {"pint", pint}, {"pop", pop},/*
-				    {"swap", swap}, {"add", add},*/
-				    {"nop", nop},{NULL, NULL}};
+				    {"pint", pint}, {"pop", pop},
+				    /*{"swap", swap},*/ {"add", add},
+				    {"nop", nop}, {NULL, NULL}};
 	stack = NULL;
 	line_number = 1;
 	while (fgets(line, sizeof(line), bt_code) != NULL)
@@ -53,6 +65,13 @@ void select_instruction(FILE *bt_code)
 		line_number++;
 	}
 }
+
+/**
+ * main - function that calls the opcodes
+ * @ac: is an integer
+ * @av: is a character
+ * Return: Always 0
+ */
 int main(int ac, char **av)
 {
 	FILE *bt_code;

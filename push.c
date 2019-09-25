@@ -35,7 +35,7 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-	        new->n = atoi(gbl);
+		new->n = atoi(gbl);
 		new->prev = *stack;
 		new->next = NULL;
 		*stack = new;

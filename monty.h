@@ -40,12 +40,10 @@ extern void swap(stack_t **stack, unsigned int line_number);
 extern void add(stack_t **stack, unsigned int line_number);
 extern void nop(stack_t **stack, unsigned int line_number);
 int is_a_num(char *n);
-
 #ifdef GLOBALS
-#define EXTERN
+char *gbl;
 #else
-#define EXTERN extern
+extern char *gbl;
 #endif
 
-EXTERN char *gbl;
 #endif
