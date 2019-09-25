@@ -18,9 +18,7 @@ void push(stack_t **stack, unsigned int line_number)
 			"L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-
 	new = malloc(sizeof(stack_t));
-
 	if (new == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error\n");
@@ -30,14 +28,15 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		new->n = atoi(gbl);
 		new->prev = NULL;
-		new->next = NULL;
+		new->next = *stack;
 		*stack = new;
 	}
 	else
 	{
 		new->n = atoi(gbl);
-		new->prev = *stack;
-		new->next = NULL;
+		(*stack)->prev = new;
+		new->prev = NULL;
+		new->next = *stack;
 		*stack = new;
 	}
 }

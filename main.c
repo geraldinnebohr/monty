@@ -60,12 +60,13 @@ void select_instruction(FILE *bt_code)
 		{
 			printf("L%u: unknown instruction %s\n",
 			       line_number, div_line[0]);
-				exit(EXIT_FAILURE);
+			exit(EXIT_FAILURE);
 		}
 		line_number++;
 	}
+	free(div_line);
+	free_dlistint(stack);
 }
-
 /**
  * main - function that calls the opcodes
  * @ac: is an integer
