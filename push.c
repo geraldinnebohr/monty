@@ -10,10 +10,9 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new, *end;
-	char* opcode = "h";
+	stack_t *new;
 
-	if (opcode == NULL)
+	if (is_a_num(gbl) == 0)
 	{
 		dprintf(STDERR_FILENO,
 			"L%d: usage: push integer\n", line_number);
@@ -36,12 +35,9 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		end = *stack;
-		new->n = atoi(gbl);
+	        new->n = atoi(gbl);
+		new->prev = *stack;
 		new->next = NULL;
-		while (end->next != NULL)
-			end = end->next;
-		end->next = new;
-		new->prev = end;
+		*stack = new;
 	}
 }
