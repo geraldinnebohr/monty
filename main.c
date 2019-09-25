@@ -22,17 +22,15 @@ void select_instruction(FILE *bt_code)
 	char **div_line;
 	stack_t *stack;
 	instruction_t selector[] = {{"push", push}, {"pall", pall},
-				    {"pint", pint}, {"pop", pop},
-				    {"swap", swap}, {"add", add},
-				    {"nop", nop}, {NULL, NULL}};
-	gbl = 999;
+				    {"pint", pint}, {"pop", pop},/*
+				    {"swap", swap}, {"add", add},*/
+				    {"nop", nop},{NULL, NULL}};
 	stack = NULL;
 	line_number = 1;
 	while (fgets(line, sizeof(line), bt_code) != NULL)
 	{
-		printf("%s", line);
 		div_line = get_div_line(line);
-		printf("0->%s\n1->%s\n", div_line[0], div_line[1]);
+		gbl = div_line[1];
 		i = 0;
 		flag = 1;
 		while (selector[i].opcode != NULL)
@@ -41,7 +39,6 @@ void select_instruction(FILE *bt_code)
 			if (c == 0)
 			{
 				selector[i].f(&stack, line_number);
-				printf("========================\n");
 				flag = 0;
 				break;
 			}

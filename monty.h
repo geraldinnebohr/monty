@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -45,5 +46,5 @@ extern void nop (stack_t **stack, unsigned int line_number);
 #define EXTERN extern
 #endif
 
-EXTERN int gbl;
+EXTERN char *gbl;
 #endif
