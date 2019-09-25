@@ -40,6 +40,8 @@ extern void swap(stack_t **stack, unsigned int line_number);
 extern void add(stack_t **stack, unsigned int line_number);
 extern void nop(stack_t **stack, unsigned int line_number);
 int is_a_num(char *n);
+void free_dlistint(stack_t *head);
+
 #ifdef GLOBALS
 char *gbl;
 #else
