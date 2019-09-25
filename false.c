@@ -1,6 +1,8 @@
+#define GLOBALS
 #include "monty.h"
 void push (stack_t **stack, unsigned int line_number){
 	(void)stack;
+	printf("__%d__", gbl);
 	printf("false push %u\n", line_number);}
 void pall (stack_t **stack, unsigned int line_number){
 	(void)stack;

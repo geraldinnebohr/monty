@@ -1,3 +1,4 @@
+#define GLOBALS
 #include "monty.h"
 char **get_div_line(char *line)
 {
@@ -24,6 +25,7 @@ void select_instruction(FILE *bt_code)
 				    {"pint", pint}, {"pop", pop},
 				    {"swap", swap}, {"add", add},
 				    {"nop", nop}, {NULL, NULL}};
+	gbl = 999;
 	stack = NULL;
 	line_number = 1;
 	while (fgets(line, sizeof(line), bt_code) != NULL)
