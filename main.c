@@ -35,7 +35,7 @@ void select_instruction(FILE *bt_code)
 	stack_t *stack;
 	instruction_t selector[] = {{"push", push}, {"pall", pall},
 				    {"pint", pint}, {"pop", pop},
-				    /*{"swap", swap},*/ {"add", add},
+				    {"swap", swap}, {"add", add},
 				    {"nop", nop}, {NULL, NULL}};
 	stack = NULL;
 	line_number = 1;
