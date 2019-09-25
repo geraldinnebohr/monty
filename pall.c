@@ -8,11 +8,11 @@
 
 void pall(stack_t **stack, unsigned int line_number)
 {
-	(void)line_number;
-
 	stack_t *ant;
 
 	ant = *stack;
+
+	(void)line_number;
 
 	while (ant != NULL)
 	{

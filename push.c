@@ -1,4 +1,4 @@
-#define "monty.h"
+#include "monty.h"
 
 /**
  * push - function that pushes an element to the stack
@@ -9,11 +9,13 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
-	char *opcode;
-	char *delim;
+	/*char *opcode;*/
+	/**char *delim = "\t \a\n";*/
+		/**delim = "\t \a\n";*/
+	/**char* opcode = strtok(NULL, delim);*/
+	char* opcode = "h";
 
 	(void)line_number;
-	delim = "\t \a\n";
 	new = malloc(sizeof(stack_t));
 
 	if (new == NULL)
@@ -22,7 +24,7 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	opcode = strtok(NULL, delim);
+/**	char* opcode = strtok(NULL, delim);*/
 
 	new->n = atoi(opcode);
 	new->prev = NULL;
