@@ -51,6 +51,11 @@ void select_instruction(FILE *bt_code)
 		flag = 1;
 		while (selector[i].opcode != NULL)
 		{
+			if (div_line[0][0] == '#')
+			{
+				flag = 0;
+				break;
+			}
 			c = strcmp(div_line[0], selector[i].opcode);
 			if (c == 0)
 			{
