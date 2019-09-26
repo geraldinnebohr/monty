@@ -42,6 +42,7 @@ extern void nop(stack_t **stack, unsigned int line_number);
 extern void sub(stack_t **stack, unsigned int line_number);
 extern void division(stack_t **stack, unsigned int line_number);
 extern void mul(stack_t **stack, unsigned int line_number);
+extern void mod(stack_t **stack, unsigned int line_number);
 int is_a_num(char *n);
 void free_dlistint(stack_t *head);
 
