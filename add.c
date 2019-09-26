@@ -10,10 +10,10 @@ void add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp, *del;
 
-	if ((*stack)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		dprintf(STDERR_FILENO,
-			"L%d: can't add, stack too short", line_number);
+			"L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	tmp = *stack;
