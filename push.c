@@ -16,12 +16,20 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		dprintf(STDERR_FILENO,
 			"L%d: usage: push integer\n", line_number);
+		free_dlistint(*stack);
+		free(gbl.line);
+		free(gbl.div_line);
+		fclose(gbl.bt_code);
 		exit(EXIT_FAILURE);
 	}
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		free_dlistint(*stack);
+		free(gbl.line);
+		free(gbl.div_line);
+		fclose(gbl.bt_code);
 		exit(EXIT_FAILURE);
 	}
 	if (*stack == NULL)
