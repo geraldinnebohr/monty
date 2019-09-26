@@ -11,13 +11,14 @@ char **get_div_line(char *line)
 	char **div;
 	int i = 0;
 
-	div = malloc(10 * sizeof(char *));
+	div = malloc(5 * sizeof(char *));
 	div[i] = strtok(line, " \n");
 	while (div[i])
 	{
 		i++;
 		div[i] = strtok(NULL, " \n");
 	}
+	div[i + 1] = NULL;
 	return (div);
 }
 
@@ -63,8 +64,8 @@ void select_instruction(FILE *bt_code)
 			exit(EXIT_FAILURE);
 		}
 		line_number++;
+		free(div_line);
 	}
-	free(div_line);
 	free_dlistint(stack);
 }
 /**
