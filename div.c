@@ -16,6 +16,14 @@ void division(stack_t **stack, unsigned int line_number)
 			"L%d: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+
+	if ((*stack)->n == 0)
+	{
+		dprintf(STDERR_FILENO,
+			"L%d: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
 	tmp = *stack;
 	tmp = tmp->next;
 	tmp->n /= (*stack)->n;
