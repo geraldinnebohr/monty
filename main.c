@@ -51,8 +51,7 @@ void select_instruction(FILE *bt_code)
 		while (selector[i].opcode != NULL)
 		{
 			if (div_line[0][0] == '#')
-			{
-				nop(&stack, line_number);
+			{nop(&stack, line_number);
 				flag = 0;
 				break; }
 			c = strcmp(div_line[0], selector[i].opcode);
