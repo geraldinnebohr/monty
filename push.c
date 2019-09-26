@@ -12,12 +12,13 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
 
-	if (is_a_num(gbl) == 0 || gbl == NULL)
+	if (gbl == NULL || is_a_num(gbl) == 0)
 	{
 		dprintf(STDERR_FILENO,
 			"L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+	printf(">%s<\n", gbl);
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
