@@ -10,10 +10,11 @@ void mul(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp, *del;
 
+	(void)line_number;
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		dprintf(STDERR_FILENO,
-			"L%d: can't mul, stack too short\n", line_number);
+			"L%d: can't mul, stack too short\n", gbl.line_number);
 		exit(EXIT_FAILURE);
 	}
 	tmp = *stack;
