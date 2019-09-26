@@ -12,9 +12,6 @@ void pint(stack_t **stack, unsigned int line_number)
 	{
 		dprintf(STDERR_FILENO,
 			"L%d: can't pint, stack empty\n", line_number);
-		free_dlistint(*stack);
-		free(gbl.div_line);
-		fclose(gbl.bt_code);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
