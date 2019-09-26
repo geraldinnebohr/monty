@@ -6,7 +6,7 @@
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp, *nw_last;
+	stack_t *temp, *nw_stack;
 
 	if (*stack == NULL || stack == NULL)
 	{
@@ -15,13 +15,13 @@ void pop(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	temp = *stack;
-	if (temp->prev == NULL)
+	if (temp->next == NULL)
 		*stack = NULL;
 	else
 	{
-		nw_last = temp->prev;
-		nw_last->next = NULL;
-		*stack = nw_last;
+		nw_stack = temp->next;
+		nw_stack->prev = NULL;
+		*stack = nw_stack;
 	}
 	free(temp);
 }
