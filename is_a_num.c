@@ -19,9 +19,15 @@ int _isdigit(int c)
  */
 int is_a_num(char *n)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; n[i]; i++)
+	if (n[i] == '-')
+	{
+		i++;
+		if (n[i] == '\0')
+			return (0);
+	}
+	for (; n[i]; i++)
 	{
 		if (_isdigit(n[i]) == 0)
 			return (0);

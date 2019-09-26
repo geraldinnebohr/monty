@@ -12,7 +12,7 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
 
-	if (is_a_num(gbl) == 0)
+	if (is_a_num(gbl) == 0 || gbl == NULL)
 	{
 		dprintf(STDERR_FILENO,
 			"L%d: usage: push integer\n", line_number);

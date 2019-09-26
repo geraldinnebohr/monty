@@ -44,7 +44,7 @@ void select_instruction(FILE *bt_code)
 	{
 		div_line = get_div_line(line);
 		gbl = div_line[1];
-		i = 0;
+	        i = 0;
 		flag = 1;
 		while (selector[i].opcode != NULL)
 		{
