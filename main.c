@@ -8,16 +8,18 @@
  */
 void select_instruction(void)
 {
-	unsigned int line_number;
 	size_t l_sz = 0;
 	stack_t *stack;
-	gbl.line = NULL, stack = NULL, line_number = 1;
+
+	gbl.line = NULL;
+	stack = NULL;
+	gbl.line_number = 1;
 	while (getline(&(gbl.line), &l_sz, gbl.bt_code) != -1)
 	{
 		gbl.div_line = get_div_line(gbl.line);
 		if (gbl.div_line == NULL)
 		{
-			line_number++;
+			gbl.line_number++;
 			continue;
 		}
 		gbl.num = gbl.div_line[1];

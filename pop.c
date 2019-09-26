@@ -8,10 +8,12 @@ void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp, *nw_stack;
 
+	(void)line_number;
+
 	if (*stack == NULL || stack == NULL)
 	{
 		dprintf(STDERR_FILENO,
-			"L%d: can't pop an empty stack\n", line_number);
+			"L%d: can't pop an empty stack\n", gbl.line_number);
 		free_dlistint(*stack);
 		free(gbl.line);
 		free(gbl.div_line);
