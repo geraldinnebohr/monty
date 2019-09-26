@@ -31,15 +31,15 @@ void select_instruction(FILE *bt_code)
 {
 	int c, flag;
 	unsigned int line_number, i;
-	char line[50];
-	char **div_line;
+	char line[50], **div_line;
 	stack_t *stack;
 	instruction_t selector[] = {{"push", push}, {"pall", pall},
 				    {"pint", pint}, {"pop", pop},
 				    {"swap", swap}, {"add", add},
 				    {"nop", nop}, {"sub", sub},
 				    {"div", division}, {"mul", mul},
-				    {"mul", mul}, {NULL, NULL}};
+				    {"mod", mod}, {"pchar", pchar},
+				    {NULL, NULL}};
 	stack = NULL;
 	line_number = 1;
 	while (fgets(line, sizeof(line), bt_code) != NULL)
@@ -50,24 +50,24 @@ void select_instruction(FILE *bt_code)
 		flag = 1;
 		while (selector[i].opcode != NULL)
 		{
+			if (div_line[0][0] == '#')
+			{nop(&stack, line_number);
+				flag = 0;
+				break; }
 			c = strcmp(div_line[0], selector[i].opcode);
 			if (c == 0)
 			{
 				selector[i].f(&stack, line_number);
 				flag = 0;
-				break;
-			}
-			i++;
-		}
+				break; }
+			i++; }
 		if (flag)
 		{
 			dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n",
 				line_number, div_line[0]);
-			exit(EXIT_FAILURE);
-		}
+			exit(EXIT_FAILURE); }
 		line_number++;
-		free(div_line);
-	}
+		free(div_line); }
 	free_dlistint(stack);
 }
 /**
