@@ -8,18 +8,18 @@
  */
 char **get_div_line(char *line)
 {
-	char **div;
+	char **divide;
 	int i = 0;
 
-	div = malloc(5 * sizeof(char *));
-	div[i] = strtok(line, " \n");
-	while (div[i])
+	divide = malloc(5 * sizeof(char *));
+	divide[i] = strtok(line, " \n");
+	while (divide[i])
 	{
 		i++;
-		div[i] = strtok(NULL, " \n");
+		divide[i] = strtok(NULL, " \n");
 	}
-	div[i + 1] = NULL;
-	return (div);
+	divide[i + 1] = NULL;
+	return (divide);
 }
 
 /**
@@ -37,7 +37,8 @@ void select_instruction(FILE *bt_code)
 	instruction_t selector[] = {{"push", push}, {"pall", pall},
 				    {"pint", pint}, {"pop", pop},
 				    {"swap", swap}, {"add", add},
-				    {"nop", nop}, {NULL, NULL}};
+				    {"nop", nop}, {"sub", sub},
+				    {"div", division}, {NULL, NULL}};
 	stack = NULL;
 	line_number = 1;
 	while (fgets(line, sizeof(line), bt_code) != NULL)
