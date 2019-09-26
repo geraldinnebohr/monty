@@ -45,7 +45,7 @@ void select_instruction(FILE *bt_code)
 	while (fgets(line, sizeof(line), bt_code) != NULL)
 	{
 		div_line = get_div_line(line);
-		gbl = div_line[1];
+		gbl.num = div_line[1];
 		i = 0;
 		flag = 1;
 		while (selector[i].opcode != NULL)

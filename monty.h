@@ -46,10 +46,17 @@ extern void mod(stack_t **stack, unsigned int line_number);
 int is_a_num(char *n);
 void free_dlistint(stack_t *head);
 
+typedef struct gbl_s
+{
+	char *num;
+	FILE *bt_code;
+	char **div_line;
+} gbl_t;
+
 #ifdef GLOBALS
-char *gbl;
+gbl_t gbl;
 #else
-extern char *gbl;
+extern gbl_t gbl;
 #endif
 
 #endif
