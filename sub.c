@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * add - function that adds the top 2 elements of the stack
+ * sub - function that substracts the top 2 elements of the stack
  * @stack: top of the stack
  * @line_number: # of the line in the .m file
  */
 
-void add(stack_t **stack, unsigned int line_number)
+void sub(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp, *del;
 
@@ -19,7 +19,7 @@ void add(stack_t **stack, unsigned int line_number)
 
 	tmp = *stack;
 	tmp = tmp->next;
-	tmp->n += (*stack)->n;
+	tmp->n -= (*stack)->n;
 	tmp->prev = NULL;
 	del = *stack;
 	*stack = tmp;
