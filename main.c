@@ -38,7 +38,8 @@ void select_instruction(FILE *bt_code)
 				    {"pint", pint}, {"pop", pop},
 				    {"swap", swap}, {"add", add},
 				    {"nop", nop}, {"sub", sub},
-				    {"div", division}, {NULL, NULL}};
+				    {"div", division}, {"mul", mul},
+				    {NULL, NULL}};
 	stack = NULL;
 	line_number = 1;
 	while (fgets(line, sizeof(line), bt_code) != NULL)
