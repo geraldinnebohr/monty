@@ -8,7 +8,7 @@
 
 void pchar(stack_t **stack, unsigned int line_number)
 {
-	char c = (*stack)->n;
+	char c;
 
 	if (*stack == NULL)
 	{
@@ -16,12 +16,13 @@ void pchar(stack_t **stack, unsigned int line_number)
 			"L%d: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-
+	c = (*stack)->n;
 	if ((*stack)->n > 127)
 	{
 		dprintf(STDERR_FILENO,
 			"L%d: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+
 	printf("%c\n", c);
 }
