@@ -47,11 +47,30 @@ extern void pchar(stack_t **stack, unsigned int line_number);
 extern void pstr(stack_t **stack, unsigned int line_number);
 int is_a_num(char *n);
 void free_dlistint(stack_t *head);
+char **get_div_line(char *line);
+void exe_function(stack_t **stack);
+
+/**
+ * struct gbl_s - struct to save extern variables
+ * @num: integer to the push function
+ * @bt_code: file descriptor
+ * @div_line: tokenized file line
+ * @line: line to tokenize
+ * Description: is used to free before exit and push an int
+ */
+typedef struct gbl_s
+{
+	char *num;
+	FILE *bt_code;
+	char **div_line;
+	char *line;
+	unsigned int line_number;
+} gbl_t;
 
 #ifdef GLOBALS
-char *gbl;
+gbl_t gbl;
 #else
-extern char *gbl;
+extern gbl_t gbl;
 #endif
 
 #endif

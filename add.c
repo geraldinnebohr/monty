@@ -14,6 +14,10 @@ void add(stack_t **stack, unsigned int line_number)
 	{
 		dprintf(STDERR_FILENO,
 			"L%d: can't add, stack too short\n", line_number);
+		free_dlistint(*stack);
+		free(gbl.line);
+		free(gbl.div_line);
+		fclose(gbl.bt_code);
 		exit(EXIT_FAILURE);
 	}
 	tmp = *stack;

@@ -12,28 +12,36 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
 
-	if (gbl == NULL || is_a_num(gbl) == 0)
+	if (gbl.num == NULL || is_a_num(gbl.num) == 0)
 	{
 		dprintf(STDERR_FILENO,
 			"L%d: usage: push integer\n", line_number);
+		free_dlistint(*stack);
+		free(gbl.line);
+		free(gbl.div_line);
+		fclose(gbl.bt_code);
 		exit(EXIT_FAILURE);
 	}
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		free_dlistint(*stack);
+		free(gbl.line);
+		free(gbl.div_line);
+		fclose(gbl.bt_code);
 		exit(EXIT_FAILURE);
 	}
 	if (*stack == NULL)
 	{
-		new->n = atoi(gbl);
+		new->n = atoi(gbl.num);
 		new->prev = NULL;
 		new->next = *stack;
 		*stack = new;
 	}
 	else
 	{
-		new->n = atoi(gbl);
+		new->n = atoi(gbl.num);
 		(*stack)->prev = new;
 		new->prev = NULL;
 		new->next = *stack;
