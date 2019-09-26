@@ -1,30 +1,27 @@
 #include "monty.h"
 
 /**
- * swap - function that swaps the 2 top elements on the stack
+ * sub - function that substracts the top 2 elements of the stack
  * @stack: top of the stack
  * @line_number: # of the line in the .m file
  */
 
-void swap(stack_t **stack, unsigned int line_number)
+void sub(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp;
+	stack_t *tmp, *del;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		dprintf(STDERR_FILENO,
-			"L%d: can't swap, stack too short\n", line_number);
+			"L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	tmp = (*stack)->next;
-	(*stack)->prev = tmp;
-	(*stack)->next = tmp->next;
+	tmp = *stack;
+	tmp = tmp->next;
+	tmp->n -= (*stack)->n;
 	tmp->prev = NULL;
-
-	if (tmp->next)
-		(tmp->next)->prev = *stack;
-
-	tmp->next = *stack;
+	del = *stack;
 	*stack = tmp;
-}"'")}}
+	free(del);
+}
