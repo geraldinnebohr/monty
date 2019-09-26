@@ -1,5 +1,11 @@
 #define GLOBALS
 #include "monty.h"
+
+/**
+ * get_div_line - function that tokenizes the line
+ * @line: is a character
+ * Return: arrays of strings
+ */
 char **get_div_line(char *line)
 {
 	char **div;
@@ -14,6 +20,12 @@ char **get_div_line(char *line)
 	}
 	return (div);
 }
+
+/**
+ * select_instruction - function that sort the opcodes
+ * @bt_code: .m file
+ * Return: Void function
+ */
 void select_instruction(FILE *bt_code)
 {
 	int c, flag;
@@ -25,14 +37,12 @@ void select_instruction(FILE *bt_code)
 				    {"pint", pint}, {"pop", pop},
 				    {"swap", swap}, {"add", add},
 				    {"nop", nop}, {NULL, NULL}};
-	gbl = 999;
 	stack = NULL;
 	line_number = 1;
 	while (fgets(line, sizeof(line), bt_code) != NULL)
 	{
-		printf("%s", line);
 		div_line = get_div_line(line);
-		printf("0->%s\n1->%s\n", div_line[0], div_line[1]);
+		gbl = div_line[1];
 		i = 0;
 		flag = 1;
 		while (selector[i].opcode != NULL)
@@ -41,7 +51,6 @@ void select_instruction(FILE *bt_code)
 			if (c == 0)
 			{
 				selector[i].f(&stack, line_number);
-				printf("========================\n");
 				flag = 0;
 				break;
 			}
@@ -51,11 +60,19 @@ void select_instruction(FILE *bt_code)
 		{
 			printf("L%u: unknown instruction %s\n",
 			       line_number, div_line[0]);
-				exit(EXIT_FAILURE);
+			exit(EXIT_FAILURE);
 		}
 		line_number++;
 	}
+	free(div_line);
+	free_dlistint(stack);
 }
+/**
+ * main - function that calls the opcodes
+ * @ac: is an integer
+ * @av: is a character
+ * Return: Always 0
+ */
 int main(int ac, char **av)
 {
 	FILE *bt_code;
