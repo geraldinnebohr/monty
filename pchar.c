@@ -19,7 +19,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	c = (*stack)->n;
 
-	if ((*stack)->n > 127)
+	if ((*stack)->n > 127 || (*stack)->n < 0)
 	{
 		dprintf(STDERR_FILENO,
 			"L%d: can't pchar, value out of range\n", line_number);
