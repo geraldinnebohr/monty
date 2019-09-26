@@ -10,10 +10,11 @@ void sub(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp, *del;
 
+	(void)line_number;
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		dprintf(STDERR_FILENO,
-			"L%d: can't sub, stack too short\n", line_number);
+			"L%d: can't sub, stack too short\n", gbl.line_number);
 		free_dlistint(*stack);
 		free(gbl.line);
 		free(gbl.div_line);
