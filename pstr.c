@@ -18,9 +18,14 @@ void pstr(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	while (current->n < 0 || current->n != 0 || current->n > 127)
+	while (current->n != 0)
 	{
 		c = current->n;
+		if (current->n < 0 || current->n > 127)
+		{
+			printf("\n");
+			exit(EXIT_FAILURE);
+		}
 		printf("%c", c);
 		current = current->next;
 	}
