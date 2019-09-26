@@ -11,7 +11,6 @@ void select_instruction(void)
 	unsigned int line_number;
 	size_t l_sz = 0;
 	stack_t *stack;
-
 	gbl.line = NULL, stack = NULL, line_number = 1;
 	while (getline(&(gbl.line), &l_sz, gbl.bt_code) != -1)
 	{
