@@ -45,6 +45,7 @@ extern void mul(stack_t **stack, unsigned int line_number);
 extern void mod(stack_t **stack, unsigned int line_number);
 extern void pchar(stack_t **stack, unsigned int line_number);
 extern void pstr(stack_t **stack, unsigned int line_number);
+extern void rotl(stack_t **stack, unsigned int line_number);
 int is_a_num(char *n);
 void free_dlistint(stack_t *head);
 char **get_div_line(char *line);

@@ -13,7 +13,7 @@ void exe_function(stack_t **stack)
 				    {"nop", nop}, {"sub", sub},
 				    {"div", division}, {"mul", mul},
 				    {"mod", mod}, {"pchar", pchar},
-				    {NULL, NULL}};
+				    {"rotl", rotl}, {NULL, NULL}};
 	int flag = 1, i = 0, c;
 
 	while (selector[i].opcode != NULL)
