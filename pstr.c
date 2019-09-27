@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * pall - function that prints all the values on the stack
+ * pstr - function that prints the string on the top of the stack
  * @stack: top of the stack
  * @line_number: # of the line in the .m file
  */
