@@ -11,6 +11,7 @@ void select_instruction(void)
 	size_t l_sz = 0;
 	stack_t *stack;
 
+	gbl.mode = 1;
 	gbl.line = NULL;
 	stack = NULL;
 	gbl.line_number = 1;
@@ -24,6 +25,10 @@ void select_instruction(void)
 		}
 		gbl.num = gbl.div_line[1];
 		exe_function(&stack);
+		if (strcmp(gbl.div_line[0], "stack") == 0)
+			gbl.mode = 1;
+		else if (strcmp(gbl.div_line[0], "queue") == 0)
+			gbl.mode = 0;
 		gbl.line_number++;
 		free(gbl.div_line);
 	}

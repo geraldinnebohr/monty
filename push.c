@@ -10,7 +10,7 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new;
+	stack_t *new, *current;
 
 	if (gbl.num == NULL || is_a_num(gbl.num) == 0)
 	{
@@ -20,8 +20,7 @@ void push(stack_t **stack, unsigned int line_number)
 		free(gbl.line);
 		free(gbl.div_line);
 		fclose(gbl.bt_code);
-		exit(EXIT_FAILURE);
-	}
+		exit(EXIT_FAILURE); }
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
@@ -30,21 +29,25 @@ void push(stack_t **stack, unsigned int line_number)
 		free(gbl.line);
 		free(gbl.div_line);
 		fclose(gbl.bt_code);
-		exit(EXIT_FAILURE);
-	}
+		exit(EXIT_FAILURE); }
+	new->n = atoi(gbl.num);
 	if (*stack == NULL)
 	{
-		new->n = atoi(gbl.num);
 		new->prev = NULL;
-		new->next = *stack;
-		*stack = new;
-	}
-	else
+		new->next = NULL;
+		*stack = new; }
+	else if (gbl.mode == 1)
 	{
-		new->n = atoi(gbl.num);
 		(*stack)->prev = new;
 		new->prev = NULL;
 		new->next = *stack;
-		*stack = new;
-	}
+		*stack = new; }
+	else if (gbl.mode == 0)
+	{
+		current = *stack;
+		while (current->next != NULL)
+			current = current->next;
+		new->next = NULL;
+		new->prev = current;
+		current->next = new; }
 }
