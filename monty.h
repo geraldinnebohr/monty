@@ -59,6 +59,7 @@ void exe_function(stack_t **stack);
  * @div_line: tokenized file line
  * @line: line to tokenize
  * @line_number: line number to the error
+ * @mode: mode stack or queue
  * Description: is used to free before exit and push an int
  */
 typedef struct gbl_s
