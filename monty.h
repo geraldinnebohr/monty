@@ -68,6 +68,7 @@ typedef struct gbl_s
 	char **div_line;
 	char *line;
 	unsigned int line_number;
+	int mode;
 } gbl_t;
 
 #ifdef GLOBALS
