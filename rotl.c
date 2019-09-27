@@ -10,7 +10,7 @@ void rotl(stack_t **stack, unsigned int line_number)
 	int nw_n;
 
 	(void)line_number;
-	if (*stack != NULL)
+	if (*stack != NULL || (*stack)->next != NULL)
 	{
 		new = malloc(sizeof(stack_t));
 		if (new == NULL)
