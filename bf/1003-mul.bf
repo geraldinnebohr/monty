@@ -35,4 +35,4 @@ convert to ascii
 
 print
 >>[.<<]<[<<]>>.
->>++++++++++.
+>>++++++++++. print new line
